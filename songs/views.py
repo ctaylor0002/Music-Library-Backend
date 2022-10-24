@@ -1,3 +1,29 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import status
+
+from .serializers import SongsSerializer
+from .models import Songs
+from songs import serializers
 
 # Create your views here.
+
+@api_view(['GET'])
+def songs_list(request):
+
+    if request.method == 'GET':
+
+        songs = Songs.objects.all()
+
+        song_serializer = SongsSerializer(songs, many=True)
+        return Response(song_serializer.data)
+
+
+@api_view(['GET'])
+def songs_details(request, pk):
+    song = get_object_or_404(Songs, pk=pk)
+    if request.method == 'GET':
+        serialized_data = SongsSerializer(song)
+        return Response(serialized_data.data)
+
