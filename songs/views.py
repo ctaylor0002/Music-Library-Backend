@@ -9,7 +9,7 @@ from songs import serializers
 
 # Create your views here.
 
-@api_view(['GET'])
+@api_view(['GET', 'POST'])
 def songs_list(request):
 
     if request.method == 'GET':
@@ -18,6 +18,12 @@ def songs_list(request):
 
         song_serializer = SongsSerializer(songs, many=True)
         return Response(song_serializer.data)
+
+    elif request.method == 'POST':
+        song_serializer = SongsSerializer(data=request.data)
+        song_serializer.is_valid(raise_exception=True)
+        song_serializer.save()  
+        return Response(song_serializer.data, status=status.HTTP_201_CREATED)
 
 
 @api_view(['GET'])
