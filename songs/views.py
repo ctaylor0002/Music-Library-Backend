@@ -26,10 +26,15 @@ def songs_list(request):
         return Response(song_serializer.data, status=status.HTTP_201_CREATED)
 
 
-@api_view(['GET'])
+@api_view(['GET', 'PUT'])
 def songs_details(request, pk):
     song = get_object_or_404(Songs, pk=pk)
     if request.method == 'GET':
         serialized_data = SongsSerializer(song)
         return Response(serialized_data.data)
 
+    elif request.method == 'PUT':
+        serialized_data = SongsSerializer(song, data=request.data)
+        serialized_data.is_valid(raise_exception=True)
+        serialized_data.save()
+        return Response(serialized_data.data, status=status.HTTP_200_OK)
