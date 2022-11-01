@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e2dec295-9fac-4b4c-8eda-53611af9645b",
+		"_postman_id": "1da75c4c-71b7-41f2-89bf-6ba8938a9765",
 		"name": "Music_Library_Backend",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "23290948"
@@ -12,7 +12,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:8000/songs/",
+					"raw": "http://127.0.0.1:8000/music/",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -22,7 +22,7 @@
 					],
 					"port": "8000",
 					"path": [
-						"songs",
+						"music",
 						""
 					]
 				}
@@ -35,7 +35,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:8000/songs/1/",
+					"raw": "http://127.0.0.1:8000/music/1/",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -45,7 +45,7 @@
 					],
 					"port": "8000",
 					"path": [
-						"songs",
+						"music",
 						"1",
 						""
 					]
@@ -60,7 +60,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"title\" : \"Carousel\",\r\n    \"artist\" : \"Slushii\",\r\n    \"album\" : \"E.L.E\",\r\n    \"release_date\" : \"2022-03-03\",\r\n    \"genre\" : \"Not Chill Hop\"\r\n}",
+					"raw": "{\r\n    \"title\" : \"Carousel\",\r\n    \"artist\" : \"Slushii\",\r\n    \"album\" : \"E.L.E\",\r\n    \"release_date\" : \"2022-03-03\",\r\n    \"genre\" : \"Dubstep\",\r\n    \"likes\" : 0\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -68,7 +68,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/songs/",
+					"raw": "http://127.0.0.1:8000/music/",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -78,7 +78,7 @@
 					],
 					"port": "8000",
 					"path": [
-						"songs",
+						"music",
 						""
 					]
 				}
@@ -100,7 +100,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/songs/4/",
+					"raw": "http://127.0.0.1:8000/music/4/",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -110,7 +110,7 @@
 					],
 					"port": "8000",
 					"path": [
-						"songs",
+						"music",
 						"4",
 						""
 					]
@@ -124,7 +124,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:8000/songs/4/",
+					"raw": "http://127.0.0.1:8000/music/4/",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -134,7 +134,7 @@
 					],
 					"port": "8000",
 					"path": [
-						"songs",
+						"music",
 						"4",
 						""
 					]
@@ -145,11 +145,11 @@
 		{
 			"name": "Like_or_Dislike_Song",
 			"request": {
-				"method": "POST",
+				"method": "PATCH",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"song_id\" : 1,\r\n    \"like_condition\" : \"False\"\r\n}",
+					"raw": "{\r\n    \"likes\" : 1\r\n}\r\n    \r\n    \r\n    ",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -157,7 +157,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/like_condition/1/?like_condition=False",
+					"raw": "http://127.0.0.1:8000/music/1/",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -167,15 +167,9 @@
 					],
 					"port": "8000",
 					"path": [
-						"like_condition",
+						"music",
 						"1",
 						""
-					],
-					"query": [
-						{
-							"key": "like_condition",
-							"value": "False"
-						}
 					]
 				}
 			},
